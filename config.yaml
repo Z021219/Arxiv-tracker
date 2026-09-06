@@ -1,60 +1,38 @@
-# === 检索 ===
-categories: ["cs.CV", "physics.optics", "physics.ins-det", "eess.IV", "cs.RO"]
+categories: ["cs.CV", "physics.optics", "physics.ins-det", "eess.IV"]
+
 keywords:
-  - "dimensional measurement"
   - "diameter measurement"
   - "laser triangulation"
-  - "surface roughness measurement"
-  - "industrial metrology"
-  - "speckle"
+  - "surface roughness"
+  - "dimensional measurement"
   - "structured light"
-  - "fringe projection"
-  - "deflectometry"
   - "profilometry"
-  - "on-machine measurement"
-  - "in-process measurement"
-  - "machine vision inspection"
-  - "railway wheel"
   - "wheelset"
-  - "3D reconstruction point cloud"
-  - "uncertainty measurement GUM"
-exclude_keywords:
-  - "Large Language Model"
-  - "Generative AI"
-  - "LLM agent"
-  - "text-to-image"
-  - "diffusion model"
+
+exclude_keywords: []
+
 logic: "AND"
 max_results: 40
 sort_by: "lastUpdatedDate"
 sort_order: "descending"
 
-# === 输出语言 ===
 lang: "both"
 
-# === 摘要生成 ===
 summary:
   mode: "llm"
   scope: "tldr"
 
-# === LLM（DeepSeek）===
 llm:
   provider: "openai-compatible"
   base_url: "https://api.deepseek.com"
   model: "deepseek-chat"
   api_key_env: "OPENAI_COMPAT_API_KEY"
-  system_prompt_en: |
-    You are a senior paper-reading assistant...
-  system_prompt_zh: |
-    你是资深论文阅读助手...
 
-# === 中文翻译 ===
 translate:
   enabled: true
   lang: "zh"
   fields: ["title", "summary"]
 
-# === 邮件 ===
 email:
   enabled: true
   subject: "[arXiv] 测量方向每日速递"
@@ -67,7 +45,6 @@ email:
   attach_md: true
   attach_pdf: false
 
-# === 站点（GitHub Pages）===
 site:
   enabled: true
   dir: "docs"
@@ -76,7 +53,6 @@ site:
   theme: "light"
   accent: "#2563eb"
 
-# === 新鲜度 & 去重 ===
 freshness:
   since_days: 7
   unique_only: true
