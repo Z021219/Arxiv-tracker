@@ -1,18 +1,14 @@
-categories: ["cs.CV", "physics.optics", "physics.ins-det", "eess.IV"]
+categories: ["physics.optics", "eess.IV", "physics.ins-det"]
 
 keywords:
-  - "diameter measurement"
-  - "laser triangulation"
+  - "speckle"
   - "surface roughness"
-  - "dimensional measurement"
-  - "structured light"
-  - "profilometry"
-  - "wheelset"
+  - "optical metrology"
 
 exclude_keywords: []
 
 logic: "AND"
-max_results: 40
+max_results: 20
 sort_by: "lastUpdatedDate"
 sort_order: "descending"
 
@@ -35,7 +31,7 @@ translate:
 
 email:
   enabled: true
-  subject: "[arXiv] 测量方向每日速递"
+  subject: "[arXiv] 光学测量前沿"
   smtp_server: "smtp.qq.com"
   smtp_port: 465
   tls: "ssl"
@@ -48,7 +44,7 @@ email:
 site:
   enabled: true
   dir: "docs"
-  title: "测量方向论文速递"
+  title: "光学测量前沿"
   keep_runs: 1024
   theme: "light"
   accent: "#2563eb"
