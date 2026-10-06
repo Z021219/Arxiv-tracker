@@ -1,0 +1,580 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>光学测量前沿</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>光学测量前沿</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-07 06:56</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261007_0656</div>
+    <div class="row"><div class="card">
+<div class="title">Vectorial Control of Scintillation in Kolmogorov Turbulence and Quality Parametrization</div>
+<div class="meta-line">Authors: Shirsendu Sarkar, Shouvik Sadhukhan, Debabrata Bhadra</div>
+<div class="meta-line">First: 2026-03-07T06:33:21+00:00 · Latest: 2026-10-05T12:08:24+00:00</div>
+<div class="meta-line">Comments: 17 pages, 13 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.07058v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.07058v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Intensity scintillation limits free-space optical links in strong turbulence. We examine experimentally how sequential linear polarization filtering modifies the scintillation of a laser beam distorted by Kolmogorov-type turbulence, and interpret the results with a vector-field and fourth-order-moment model. A collimated He--Ne beam (632.8~nm) crossed a rotating pseudo-random phase plate (Fried parameter $r_0\approx0.6$~mm) and zero to five co-aligned thin-film polarizers; 200 camera frames were recorded per configuration, together with a turbulence-free reference. For fully developed speckle the model gives a total-field index $σ_I^2=(1+P^2)/2$ in terms of the degree of polarization $P$. From zero to five polarizers, the Gaussian-envelope scintillation index fell from 0.083 to 0.002 and the single-pixel index from 0.80 to 0.27 (about 66\%), whereas beam wander remained comparable across configurations. As Gaussian statistics alone cannot explain this reduction, we attribute it to rejection of a depolarized, strongly fluctuating component and derive a quantitative criterion for this mechanism. Passive polarization filtering thus offers a simple, low-cost route to scintillation mitigation in free-space optical terminals.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>柯尔莫哥洛夫湍流中闪烁的矢量控制与质量参数化</div>
+<div class="mono" style="margin-top:8px">强度闪烁限制了强湍流中的自由空间光链路。我们通过实验研究了顺序线性偏振滤波如何改变被柯尔莫哥洛夫型湍流畸变的激光束的闪烁，并用矢量场和四阶矩模型解释结果。一束准直的氦氖光束（632.8 nm）穿过一个旋转的伪随机相位板（Fried参数 $r_0\approx0.6$ mm）以及零到五个共线排列的薄膜偏振片；每种配置记录200帧相机图像，并记录无湍流参考。对于完全发展的散斑，该模型以偏振度 $P$ 给出总场指数 $σ_I^2=(1+P^2)/2$。从零到五个偏振片，高斯包络闪烁指数从0.083降至0.002，单像素指数从0.80降至0.27（约66\%），而光束漂移在各配置间保持相当。由于仅高斯统计无法解释这种降低，我们将其归因于对去偏振、强起伏分量的抑制，并推导出该机制的定量判据。因此，被动偏振滤波为自由空间光终端中的闪烁缓解提供了一种简单、低成本的途径。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Intensity scintillation degrades free-space optical links in strong turbulence, motivating a low-cost mitigation strategy. The authors experimentally passed a collimated He-Ne beam through a rotating pseudo-random phase plate (Fried parameter about 0.6 mm) and zero to five co-aligned thin-film polarizers, recording 200 camera frames per configuration plus a turbulence-free reference, and interpreted the data with a vector-field and fourth-order-moment model predicting a total-field scintillation index of (1+P^2)/2 for fully developed speckle. Increasing the number of polarizers from zero to five reduced the Gaussian-envelope scintillation index from 0.083 to 0.002 and the single-pixel index from 0.80 to 0.27 (about 66 percent) while beam wander stayed comparable, an effect attributed to rejection of a depolarized, strongly fluctuating component and captured by a derived quantitative criterion, showing that passive polarization filtering can simply and cheaply mitigate scintillation.</div>
+<div class="mono" style="margin-top:8px">强湍流下的强度闪烁会限制自由空间光链路性能，因此需要低成本的抑制手段。作者将准直的632.8纳米氦氖激光束穿过旋转的伪随机相位板（Fried参数约0.6毫米），并依次通过零到五片共轴薄膜偏振片，每种配置记录200帧相机图像并采集无湍流参考，同时用矢量场与四阶矩模型进行解释，该模型对完全发育散斑给出总场闪烁指数(1+P^2)/2。偏振片从零片增至五片时，高斯包络闪烁指数由0.083降至0.002，单像素闪烁指数由0.80降至0.27（约66%），而光束漂移在各配置间基本相当；由于仅靠高斯统计无法解释这一下降，作者将其归因于对退偏振且强起伏分量的抑制，并给出了该机制的定量判据，表明被动偏振滤波是抑制闪烁的简单途径。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Near-field Ultrafast Nondiffractive Laser Nanoscale Cutting of Glass with Quasi-null Interface Roughness</div>
+<div class="meta-line">Authors: Rajeev Dwivedi, Anton Rudenko, Guodong Zhang, Xxx Sedao, Yaya Lefkir, Ciro D&#x27;Amico, Guanghua Cheng, Razvan Stoian</div>
+<div class="meta-line">First: 2026-09-30T15:13:41+00:00 · Latest: 2026-09-30T15:13:41+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.39928v1">Abs</a> · <a href="https://arxiv.org/pdf/2609.39928v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Generally, ultrafast laser glass dicing is governed by explosive material removal, which restricts the achievable surface roughness. Here we report single-step dicing of aluminosilicate glass with residual interface roughness below 5 nm, producing optical-quality surfaces without post-processing, using near-field-enhanced 0th-order Bessel-Gauss beams. This exceptional interface quality cannot be explained by a conventional laser ablation mechanism, such as phase explosion, melt expulsion, or fracture-dominated material removal. Instead, quantitative analysis of local thermal dynamics indicates that material removal is consistent with a Hertz-Knudsen-type evaporation process, enabling layer-by-layer removal with precision approaching a few molecular layers. These results suggest that nanoscale optical confinement fundamentally alters the response of transparent materials to ultrafast laser irradiation and establish a route toward deterministic laser processing with near-atomic precision.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>近场超快无衍射激光纳米尺度切割玻璃，界面粗糙度准零</div>
+<div class="mono" style="margin-top:8px">通常，超快激光玻璃切割由爆炸性材料去除主导，这限制了可实现的表面粗糙度。在此，我们报道了使用近场增强的0阶贝塞尔-高斯光束，对铝硅酸盐玻璃进行单步切割，残余界面粗糙度低于5 nm，无需后处理即可产生光学质量表面。这种优异的界面质量无法用传统的激光烧蚀机制解释，如相爆炸、熔融喷出或断裂主导的材料去除。相反，对局部热动力学的定量分析表明，材料去除与Hertz-Knudsen型蒸发过程一致，能够以接近几个分子层的精度逐层去除。这些结果表明，纳米尺度光学限制从根本上改变了透明材料对超快激光辐照的响应，并建立了一条通向近原子精度确定性激光加工的途径。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Ultrafast laser glass dicing typically relies on explosive material removal, which limits achievable surface roughness and often requires post-processing. This work addresses that limitation by using near-field-enhanced 0th-order Bessel-Gauss beams to perform single-step dicing of aluminosilicate glass, aiming for optical-quality surfaces with minimal residual interface roughness. Quantitative analysis of local thermal dynamics shows that the removal process is consistent with Hertz-Knudsen-type evaporation rather than conventional ablation mechanisms such as phase explosion, melt expulsion, or fracture-dominated removal. The main experimental result is single-step dicing with residual interface roughness below 5 nm, enabling layer-by-layer removal with precision approaching a few molecular layers and suggesting a route to deterministic laser processing with near-atomic precision.</div>
+<div class="mono" style="margin-top:8px">超快激光玻璃切割通常依赖爆炸式材料去除，这限制了可达到的表面粗糙度，因此本工作旨在无需后处理即可获得光学级切割表面。作者采用近场增强的零阶贝塞尔-高斯光束对铝硅酸盐玻璃进行单步切割，并通过定量分析局部热动力学来确定材料去除机制。他们获得了低于5纳米的残余界面粗糙度，这一结果无法用相位爆炸、熔融排出或断裂主导去除等传统激光烧蚀机制解释，而与Hertz-Knudsen型蒸发过程一致，可实现接近几个分子层的逐层去除，表明纳米尺度光场约束能够从根本上改变透明材料对超快激光辐照的响应，并为接近原子精度的确定性激光加工提供了途径。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Phase-resolved wide-field CARS microscopy with speckle illumination</div>
+<div class="meta-line">Authors: Federico Vernuccio, Pascal Berto, Baptiste Marthy, Guillaume Baffou, Sandro Heuke, Randy Bartels, Pierre Bon, Hervé Rigneault</div>
+<div class="meta-line">First: 2026-09-30T13:38:29+00:00 · Latest: 2026-09-30T13:38:29+00:00</div>
+<div class="meta-line">Comments: 5 figures, 20 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.39730v1">Abs</a> · <a href="https://arxiv.org/pdf/2609.39730v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coherent anti-Stokes Raman scattering (CARS) microscopy enables label-free chemical imaging of biological samples and materials. Conventionally, CARS is implemented using a point-scanning approach that probes a single vibrational mode at a time. Hyperspectral CARS enhances chemical specificity by sequentially addressing multiple Raman modes. However, the measured CARS intensity is distorted by an undesired non-resonant background, which broadens and shifts the Raman peaks, thereby hindering the interpretability of hyperspectral images. Here, we introduce a phase-sensitive, wide-field hyperspectral CARS microscopy scheme that suppresses the non-resonant background. The proposed approach combines three key components: a high-power picosecond tunable optical parametric amplifier (OPA), speckle illumination, and quantitative phase imaging based on quadriwave lateral shearing interferometry (QLSI). The high-power OPA provides the peak power required for efficient nonlinear excitation. Speckle illumination distributes the optical energy over the objective back pupil and mitigates coherent imaging artifacts. QLSI enables the simultaneous measurement of the amplitude and phase of the CARS field, thereby allowing separation of resonant and non-resonant contributions, without the need for an external reference beam. This unique combination enables practical phase-resolved CARS imaging over a field of view exceeding $60 \times 60~\text{\textmu m}^2$ at a frame rate of 1.4 Hz. We illustrate the approach by acquiring hyperspectral images of microplastics and liver steatosis across the entire CH-stretching region.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>散斑照明下的相位分辨宽场CARS显微术</div>
+<div class="mono" style="margin-top:8px">相干反斯托克斯拉曼散射（CARS）显微术能够对生物样品和材料进行无标记化学成像。传统上，CARS采用点扫描方式实现，一次仅探测单一振动模式。高光谱CARS通过依次寻址多个拉曼模式来增强化学特异性。然而，所测CARS强度会受到不需要的非共振背景的畸变，导致拉曼峰展宽和偏移，从而妨碍高光谱图像的可解释性。在此，我们提出一种相敏宽场高光谱CARS显微方案，可抑制非共振背景。所提方法结合三个关键组件：高功率皮秒可调谐光学参量放大器（OPA）、散斑照明以及基于四波横向剪切干涉术（QLSI）的定量相位成像。高功率OPA提供高效非线性激发所需的峰值功率。散斑照明将光能分布在物镜后瞳上，并减轻相干成像伪影。QLSI能够同时测量CARS场的振幅和相位，从而无需外部参考光束即可分离共振和非共振贡献。这一独特组合使得在超过$60 \times 60~\text{\textmu m}^2$的视场上以1.4 Hz的帧率实现实用的相位分辨CARS成像。我们通过获取微塑料和肝脂肪变性在整个CH伸缩区域的高光谱图像来展示该方法。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Hyperspectral CARS microscopy offers label-free chemical imaging but suffers from a non-resonant background that distorts Raman peaks and complicates interpretation, while conventional point-scanning probes only one vibrational mode at a time. This work introduces a phase-sensitive wide-field hyperspectral CARS scheme that suppresses the non-resonant background by combining a high-power picosecond tunable optical parametric amplifier for efficient nonlinear excitation, speckle illumination to distribute energy across the objective back pupil and reduce coherent artifacts, and quadriwave lateral shearing interferometry to measure the amplitude and phase of the CARS field simultaneously without an external reference beam. The approach achieves phase-resolved CARS imaging over a field of view exceeding 60 by 60 square micrometers at 1.4 Hz, demonstrated by hyperspectral imaging of microplastics and liver steatosis across the entire CH-stretching region.</div>
+<div class="mono" style="margin-top:8px">高光谱相干反斯托克斯拉曼散射（CARS）显微术可实现无标记化学成像，但非共振背景会扭曲拉曼峰并降低高光谱图像的可解释性，且传统点扫描方式一次仅探测单一振动模式。本文提出一种相位敏感的宽场高光谱CARS显微方案，通过结合高功率皮秒可调谐光参量放大器以提供高效非线性激发所需峰值功率、散斑照明以将光能分布于物镜后瞳并抑制相干成像伪影，以及基于四波横向剪切干涉的定量相位成像以无需外部参考光同时测量CARS场的振幅与相位，从而分离共振与非共振贡献。该方法在超过60×60平方微米视场上以1.4赫兹帧率实现相位分辨CARS成像，并通过对微塑料和脂肪肝在整个CH伸缩振动区的高光谱成像进行了验证。</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261006_0316.html">20261006_0316</a>
+<a href="archive/20261005_0523.html">20261005_0523</a>
+<a href="archive/20261004_1029.html">20261004_1029</a>
+<a href="archive/20261003_0313.html">20261003_0313</a>
+<a href="archive/20261002_0316.html">20261002_0316</a>
+<a href="archive/20261001_0314.html">20261001_0314</a>
+<a href="archive/20260930_0313.html">20260930_0313</a>
+<a href="archive/20260929_0312.html">20260929_0312</a>
+<a href="archive/20260928_0310.html">20260928_0310</a>
+<a href="archive/20260927_0310.html">20260927_0310</a>
+<a href="archive/20260926_0311.html">20260926_0311</a>
+<a href="archive/20260925_0312.html">20260925_0312</a>
+<a href="archive/20260924_0312.html">20260924_0312</a>
+<a href="archive/20260923_0311.html">20260923_0311</a>
+<a href="archive/20260922_0311.html">20260922_0311</a>
+<a href="archive/20260921_0310.html">20260921_0310</a>
+<a href="archive/20260920_0310.html">20260920_0310</a>
+<a href="archive/20260919_0312.html">20260919_0312</a>
+<a href="archive/20260918_0311.html">20260918_0311</a>
+<a href="archive/20260917_0311.html">20260917_0311</a>
+<a href="archive/20260916_0311.html">20260916_0311</a>
+<a href="archive/20260915_0318.html">20260915_0318</a>
+<a href="archive/20260912_0310.html">20260912_0310</a>
+<a href="archive/20260911_0310.html">20260911_0310</a>
+<a href="archive/20260910_0311.html">20260910_0311</a>
+<a href="archive/20260909_0312.html">20260909_0312</a>
+<a href="archive/20260908_0311.html">20260908_0311</a>
+<a href="archive/20260907_1444.html">20260907_1444</a>
+<a href="archive/20260907_0311.html">20260907_0311</a>
+<a href="archive/20260906_1504.html">20260906_1504</a>
+<a href="archive/20260905_0523.html">20260905_0523</a>
+<a href="archive/20260904_0540.html">20260904_0540</a>
+<a href="archive/20260903_0545.html">20260903_0545</a>
+<a href="archive/20260902_0544.html">20260902_0544</a>
+<a href="archive/20260901_0712.html">20260901_0712</a>
+<a href="archive/20260831_0555.html">20260831_0555</a>
+<a href="archive/20260830_0540.html">20260830_0540</a>
+<a href="archive/20260829_1004.html">20260829_1004</a>
+<a href="archive/20260828_1134.html">20260828_1134</a>
+<a href="archive/20260827_0547.html">20260827_0547</a>
+<a href="archive/20260826_0339.html">20260826_0339</a>
+<a href="archive/20260825_0337.html">20260825_0337</a>
+<a href="archive/20260824_0329.html">20260824_0329</a>
+<a href="archive/20260823_0330.html">20260823_0330</a>
+<a href="archive/20260822_0332.html">20260822_0332</a>
+<a href="archive/20260821_0338.html">20260821_0338</a>
+<a href="archive/20260820_0335.html">20260820_0335</a>
+<a href="archive/20260819_0338.html">20260819_0338</a>
+<a href="archive/20260818_0335.html">20260818_0335</a>
+<a href="archive/20260817_0328.html">20260817_0328</a>
+<a href="archive/20260816_0328.html">20260816_0328</a>
+<a href="archive/20260815_0352.html">20260815_0352</a>
+<a href="archive/20260814_0359.html">20260814_0359</a>
+<a href="archive/20260813_0403.html">20260813_0403</a>
+<a href="archive/20260812_0404.html">20260812_0404</a>
+<a href="archive/20260811_0357.html">20260811_0357</a>
+<a href="archive/20260810_0341.html">20260810_0341</a>
+<a href="archive/20260809_0338.html">20260809_0338</a>
+<a href="archive/20260808_0356.html">20260808_0356</a>
+<a href="archive/20260807_0844.html">20260807_0844</a>
+<a href="archive/20260806_0437.html">20260806_0437</a>
+<a href="archive/20260805_0439.html">20260805_0439</a>
+<a href="archive/20260804_0437.html">20260804_0437</a>
+<a href="archive/20260803_0416.html">20260803_0416</a>
+<a href="archive/20260802_0414.html">20260802_0414</a>
+<a href="archive/20260801_0426.html">20260801_0426</a>
+<a href="archive/20260731_0421.html">20260731_0421</a>
+<a href="archive/20260730_0416.html">20260730_0416</a>
+<a href="archive/20260727_0416.html">20260727_0416</a>
+<a href="archive/20260726_0414.html">20260726_0414</a>
+<a href="archive/20260725_0432.html">20260725_0432</a>
+<a href="archive/20260724_0419.html">20260724_0419</a>
+<a href="archive/20260723_0418.html">20260723_0418</a>
+<a href="archive/20260722_0423.html">20260722_0423</a>
+<a href="archive/20260721_0427.html">20260721_0427</a>
+<a href="archive/20260720_0411.html">20260720_0411</a>
+<a href="archive/20260719_0407.html">20260719_0407</a>
+<a href="archive/20260718_0413.html">20260718_0413</a>
+<a href="archive/20260717_0408.html">20260717_0408</a>
+<a href="archive/20260716_0417.html">20260716_0417</a>
+<a href="archive/20260715_0420.html">20260715_0420</a>
+<a href="archive/20260714_0421.html">20260714_0421</a>
+<a href="archive/20260713_0409.html">20260713_0409</a>
+<a href="archive/20260712_0409.html">20260712_0409</a>
+<a href="archive/20260711_0439.html">20260711_0439</a>
+<a href="archive/20260710_0454.html">20260710_0454</a>
+<a href="archive/20260709_0426.html">20260709_0426</a>
+<a href="archive/20260708_0455.html">20260708_0455</a>
+<a href="archive/20260707_0456.html">20260707_0456</a>
+<a href="archive/20260706_0421.html">20260706_0421</a>
+<a href="archive/20260705_0415.html">20260705_0415</a>
+<a href="archive/20260704_0421.html">20260704_0421</a>
+<a href="archive/20260703_0425.html">20260703_0425</a>
+<a href="archive/20260702_0452.html">20260702_0452</a>
+<a href="archive/20260701_0502.html">20260701_0502</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260629_0420.html">20260629_0420</a>
+<a href="archive/20260628_0423.html">20260628_0423</a>
+<a href="archive/20260627_0450.html">20260627_0450</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260625_0455.html">20260625_0455</a>
+<a href="archive/20260624_0505.html">20260624_0505</a>
+<a href="archive/20260623_0535.html">20260623_0535</a>
+<a href="archive/20260622_0445.html">20260622_0445</a>
+<a href="archive/20260621_0422.html">20260621_0422</a>
+<a href="archive/20260620_0442.html">20260620_0442</a>
+<a href="archive/20260619_0531.html">20260619_0531</a>
+<a href="archive/20260618_0519.html">20260618_0519</a>
+<a href="archive/20260617_0545.html">20260617_0545</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260615_0423.html">20260615_0423</a>
+<a href="archive/20260614_0423.html">20260614_0423</a>
+<a href="archive/20260613_0505.html">20260613_0505</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260611_0528.html">20260611_0528</a>
+<a href="archive/20260610_0504.html">20260610_0504</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260608_0421.html">20260608_0421</a>
+<a href="archive/20260607_0418.html">20260607_0418</a>
+<a href="archive/20260606_0451.html">20260606_0451</a>
+<a href="archive/20260604_0557.html">20260604_0557</a>
+<a href="archive/20260603_0556.html">20260603_0556</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260601_0419.html">20260601_0419</a>
+<a href="archive/20260531_0414.html">20260531_0414</a>
+<a href="archive/20260530_0512.html">20260530_0512</a>
+<a href="archive/20260529_0515.html">20260529_0515</a>
+<a href="archive/20260527_0459.html">20260527_0459</a>
+<a href="archive/20260526_0426.html">20260526_0426</a>
+<a href="archive/20260525_0417.html">20260525_0417</a>
+<a href="archive/20260524_0411.html">20260524_0411</a>
+<a href="archive/20260523_0445.html">20260523_0445</a>
+<a href="archive/20260522_0454.html">20260522_0454</a>
+<a href="archive/20260521_0508.html">20260521_0508</a>
+<a href="archive/20260520_0449.html">20260520_0449</a>
+<a href="archive/20260519_0442.html">20260519_0442</a>
+<a href="archive/20260518_0409.html">20260518_0409</a>
+<a href="archive/20260517_0425.html">20260517_0425</a>
+<a href="archive/20260516_0436.html">20260516_0436</a>
+<a href="archive/20260515_0457.html">20260515_0457</a>
+<a href="archive/20260514_0507.html">20260514_0507</a>
+<a href="archive/20260513_0503.html">20260513_0503</a>
+<a href="archive/20260512_0505.html">20260512_0505</a>
+<a href="archive/20260511_0418.html">20260511_0418</a>
+<a href="archive/20260510_0414.html">20260510_0414</a>
+<a href="archive/20260509_0426.html">20260509_0426</a>
+<a href="archive/20260508_0435.html">20260508_0435</a>
+<a href="archive/20260507_0454.html">20260507_0454</a>
+<a href="archive/20260506_0427.html">20260506_0427</a>
+<a href="archive/20260505_0436.html">20260505_0436</a>
+<a href="archive/20260504_0410.html">20260504_0410</a>
+<a href="archive/20260503_0414.html">20260503_0414</a>
+<a href="archive/20260502_0426.html">20260502_0426</a>
+<a href="archive/20260501_0429.html">20260501_0429</a>
+<a href="archive/20260430_0430.html">20260430_0430</a>
+<a href="archive/20260429_0437.html">20260429_0437</a>
+<a href="archive/20260428_0429.html">20260428_0429</a>
+<a href="archive/20260427_0405.html">20260427_0405</a>
+<a href="archive/20260426_0404.html">20260426_0404</a>
+<a href="archive/20260425_0410.html">20260425_0410</a>
+<a href="archive/20260424_0430.html">20260424_0430</a>
+<a href="archive/20260423_0426.html">20260423_0426</a>
+<a href="archive/20260422_0424.html">20260422_0424</a>
+<a href="archive/20260421_0418.html">20260421_0418</a>
+<a href="archive/20260420_0359.html">20260420_0359</a>
+<a href="archive/20260419_0358.html">20260419_0358</a>
+<a href="archive/20260418_0415.html">20260418_0415</a>
+<a href="archive/20260417_0421.html">20260417_0421</a>
+<a href="archive/20260416_0425.html">20260416_0425</a>
+<a href="archive/20260415_0426.html">20260415_0426</a>
+<a href="archive/20260414_0423.html">20260414_0423</a>
+<a href="archive/20260413_0352.html">20260413_0352</a>
+<a href="archive/20260412_0347.html">20260412_0347</a>
+<a href="archive/20260411_0356.html">20260411_0356</a>
+<a href="archive/20260410_0412.html">20260410_0412</a>
+<a href="archive/20260409_0411.html">20260409_0411</a>
+<a href="archive/20260407_0404.html">20260407_0404</a>
+<a href="archive/20260406_0347.html">20260406_0347</a>
+<a href="archive/20260405_0344.html">20260405_0344</a>
+<a href="archive/20260404_0350.html">20260404_0350</a>
+<a href="archive/20260403_0400.html">20260403_0400</a>
+<a href="archive/20260401_0408.html">20260401_0408</a>
+<a href="archive/20260331_0407.html">20260331_0407</a>
+<a href="archive/20260329_0347.html">20260329_0347</a>
+<a href="archive/20260328_0350.html">20260328_0350</a>
+<a href="archive/20260326_0357.html">20260326_0357</a>
+<a href="archive/20260325_0405.html">20260325_0405</a>
+<a href="archive/20260324_0400.html">20260324_0400</a>
+<a href="archive/20260323_0342.html">20260323_0342</a>
+<a href="archive/20260322_0340.html">20260322_0340</a>
+<a href="archive/20260321_0347.html">20260321_0347</a>
+<a href="archive/20260320_0356.html">20260320_0356</a>
+<a href="archive/20260319_0358.html">20260319_0358</a>
+<a href="archive/20260318_0405.html">20260318_0405</a>
+<a href="archive/20260317_0401.html">20260317_0401</a>
+<a href="archive/20260316_0343.html">20260316_0343</a>
+<a href="archive/20260315_0341.html">20260315_0341</a>
+<a href="archive/20260314_0344.html">20260314_0344</a>
+<a href="archive/20260313_0352.html">20260313_0352</a>
+<a href="archive/20260312_0352.html">20260312_0352</a>
+<a href="archive/20260311_0347.html">20260311_0347</a>
+<a href="archive/20260310_0350.html">20260310_0350</a>
+<a href="archive/20260309_0338.html">20260309_0338</a>
+<a href="archive/20260308_0337.html">20260308_0337</a>
+<a href="archive/20260307_0347.html">20260307_0347</a>
+<a href="archive/20260306_0402.html">20260306_0402</a>
+<a href="archive/20260305_0348.html">20260305_0348</a>
+<a href="archive/20260304_0348.html">20260304_0348</a>
+<a href="archive/20260303_0348.html">20260303_0348</a>
+<a href="archive/20260302_0336.html">20260302_0336</a>
+<a href="archive/20260301_0339.html">20260301_0339</a>
+<a href="archive/20260228_0348.html">20260228_0348</a>
+<a href="archive/20260227_0354.html">20260227_0354</a>
+<a href="archive/20260226_0402.html">20260226_0402</a>
+<a href="archive/20260225_0404.html">20260225_0404</a>
+<a href="archive/20260224_0406.html">20260224_0406</a>
+<a href="archive/20260223_0338.html">20260223_0338</a>
+<a href="archive/20260222_0339.html">20260222_0339</a>
+<a href="archive/20260221_0345.html">20260221_0345</a>
+<a href="archive/20260220_0348.html">20260220_0348</a>
+<a href="archive/20260219_0358.html">20260219_0358</a>
+<a href="archive/20260218_0358.html">20260218_0358</a>
+<a href="archive/20260217_0343.html">20260217_0343</a>
+<a href="archive/20260216_0339.html">20260216_0339</a>
+<a href="archive/20260215_0338.html">20260215_0338</a>
+<a href="archive/20260213_0401.html">20260213_0401</a>
+<a href="archive/20260212_0404.html">20260212_0404</a>
+<a href="archive/20260210_0409.html">20260210_0409</a>
+<a href="archive/20260208_0339.html">20260208_0339</a>
+<a href="archive/20260207_0349.html">20260207_0349</a>
+<a href="archive/20260206_0347.html">20260206_0347</a>
+<a href="archive/20260205_0346.html">20260205_0346</a>
+<a href="archive/20260204_0354.html">20260204_0354</a>
+<a href="archive/20260202_0337.html">20260202_0337</a>
+<a href="archive/20260201_0333.html">20260201_0333</a>
+<a href="archive/20260131_0345.html">20260131_0345</a>
+<a href="archive/20260130_0341.html">20260130_0341</a>
+<a href="archive/20260129_0344.html">20260129_0344</a>
+<a href="archive/20260128_0341.html">20260128_0341</a>
+<a href="archive/20260127_0338.html">20260127_0338</a>
+<a href="archive/20260126_0330.html">20260126_0330</a>
+<a href="archive/20260125_0329.html">20260125_0329</a>
+<a href="archive/20260124_0337.html">20260124_0337</a>
+<a href="archive/20260123_0337.html">20260123_0337</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0424.html">20260121_0424</a>
+<a href="archive/20260119_0329.html">20260119_0329</a>
+<a href="archive/20260118_0327.html">20260118_0327</a>
+<a href="archive/20260117_0332.html">20260117_0332</a>
+<a href="archive/20260116_0339.html">20260116_0339</a>
+<a href="archive/20260115_0334.html">20260115_0334</a>
+<a href="archive/20260114_0333.html">20260114_0333</a>
+<a href="archive/20260113_0334.html">20260113_0334</a>
+<a href="archive/20260112_0331.html">20260112_0331</a>
+<a href="archive/20260111_0329.html">20260111_0329</a>
+<a href="archive/20260110_0333.html">20260110_0333</a>
+<a href="archive/20260109_0334.html">20260109_0334</a>
+<a href="archive/20260108_0335.html">20260108_0335</a>
+<a href="archive/20260107_0330.html">20260107_0330</a>
+<a href="archive/20260106_0336.html">20260106_0336</a>
+<a href="archive/20260105_0328.html">20260105_0328</a>
+<a href="archive/20260104_0328.html">20260104_0328</a>
+<a href="archive/20260103_0325.html">20260103_0325</a>
+<a href="archive/20260102_0339.html">20260102_0339</a>
+<a href="archive/20260101_0329.html">20260101_0329</a>
+<a href="archive/20251231_0333.html">20251231_0333</a>
+<a href="archive/20251230_0332.html">20251230_0332</a>
+<a href="archive/20251229_0329.html">20251229_0329</a>
+<a href="archive/20251228_0332.html">20251228_0332</a>
+<a href="archive/20251227_0329.html">20251227_0329</a>
+<a href="archive/20251226_0330.html">20251226_0330</a>
+<a href="archive/20251225_0329.html">20251225_0329</a>
+<a href="archive/20251224_0331.html">20251224_0331</a>
+<a href="archive/20251223_0332.html">20251223_0332</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
