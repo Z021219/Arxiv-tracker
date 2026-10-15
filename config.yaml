@@ -1,15 +1,54 @@
 categories: ["physics.optics", "eess.IV", "physics.ins-det"]
 
 keywords:
+  # —— 测量对象 ——
+  - "wheel diameter measurement"
+  - "railway wheel"
+  - "wheelset"
+  - "roundness measurement"
+  - "circularity measurement"
+  - "cylindricity"
+  # —— 测量手段 ——
+  - "laser triangulation"
+  - "laser displacement sensor"
+  - "displacement sensor"
+  - "profilometry"
+  - "on-machine measurement"
+  - "in-process measurement"
+  # —— 误差机理 ——
   - "speckle"
-  - "surface roughness"
-  - "optical metrology"
+  - "surface roughness measurement"
+  - "eccentricity measurement"
+  - "error separation"
+  - "circle fitting"
+  # —— 不确定度与溯源 ——
+  - "measurement uncertainty"
+  - "GUM"
+  - "calibration"
 
-exclude_keywords: []
+exclude_keywords:
+  - "exoplanet"
+  - "orbit"
+  - "astronomy"
+  - "adaptive optics"
+  - "turbulence"
+  - "blood"
+  - "tissue"
+  - "biomedical"
+  - "in vivo"
+  - "quantum"
+  - "single-photon"
+  - "fluorescence"
+  - "neural network"
+  - "deep learning"
+  - "generative"
+  - "diffusion model"
+  - "large language model"
+  - "super-resolution"
 
-logic: "AND"
-max_results: 20
-sort_by: "lastUpdatedDate"
+logic: "OR"
+max_results: 30
+sort_by: "relevance"
 sort_order: "descending"
 
 lang: "both"
@@ -31,7 +70,7 @@ translate:
 
 email:
   enabled: true
-  subject: "[arXiv] 光学测量前沿"
+  subject: "[arXiv] 车轮测量与光学计量"
   smtp_server: "smtp.qq.com"
   smtp_port: 465
   tls: "ssl"
@@ -44,13 +83,13 @@ email:
 site:
   enabled: true
   dir: "docs"
-  title: "光学测量前沿"
+  title: "车轮测量与光学计量"
   keep_runs: 1024
   theme: "light"
   accent: "#2563eb"
 
 freshness:
-  since_days: 7
+  since_days: 3
   unique_only: true
   state_path: ".state/seen.json"
   fallback_when_empty: false
